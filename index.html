@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>音声文字起こし&要約システム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>音声要約システム</h1>
+
+    <section class="card">
+      <h2>1. 音声ファイルをアップロード</h2>
+      <form id="upload-form">
+        <input type="file" id="audio" accept=".m4a,.mp3,.wav" required />
+        <button type="submit">文字起こし</button>
+      </form>
+
+       <audio id="audio-player" controls style="display: none; margin-top: 1em;"></audio>
+    </section>
+
+    <section class="card">
+      <h2>2. 文字起こし</h2>
+      <textarea id="transcript" placeholder="ここに文字起こしが表示されます" readonly></textarea>
+    </section>
+
+    <section class="card">
+      <h2>3. 要約する</h2>
+      <button id="summarize-btn">要約</button>
+      <textarea id="summary" placeholder="ここに要約が表示されます" readonly></textarea>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
