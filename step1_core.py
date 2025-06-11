@@ -2,6 +2,7 @@ from faster_whisper import WhisperModel
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.mecab_tokenizer import MeCabTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
+from googletrans import Translator
 
 
 # モデル初期化はグローバルに一度だけ（高速化）
@@ -24,3 +25,9 @@ def summarize_text(text: str) -> str:
     # 空白・改行除去して整形
     clean = [s.strip() for s in sentences if s.strip()]
     return "。".join(clean) + "。"
+
+def translate_text(text: str) -> str:
+    translator = Translator()
+    translated = translator.translate(text,src = 'ja', dest = 'en')
+    return translated.text + "。" 
+
