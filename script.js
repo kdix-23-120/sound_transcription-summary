@@ -31,3 +31,17 @@ document.getElementById("summarize-btn").addEventListener("click", async () => {
   const data = await res.json();
   document.getElementById("summary").value = data.summary || "要約できませんでした";
 });
+
+document.getElementById("translate-btn").addEventListener("click", async () => {
+  const text = document.getElementById("transcript").value;
+  const formData = new FormData();
+  formData.append("text", text);
+
+  const res = await fetch("http://localhost:8000/translate", {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+  document.getElementById("translate").value = data.summary || "翻訳できませんでした";
+});
