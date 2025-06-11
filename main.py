@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, Form
-from step1_core import transcribe_audio, summarize_text
+from step1_core import transcribe_audio, summarize_text , translate_text
 from fastapi.middleware.cors import CORSMiddleware
 import tempfile
 import shutil
@@ -32,5 +32,14 @@ async def summarize(text: str = Form(...)):
     except Exception as e:
         print("サーバー側でエラー:", e)
         return {"error": str(e)}
-
+    
+@app.post("/translate")
+async def translate(text: str = Form(...)):
+    try:
+        print("受信テキスト", text)
+        translate = translate_text(text)
+        return {"translate":translate}
+    except Exception as e:
+        print("サーバー側でエラー:", e)
+        return {"error": str(e)}    
 
