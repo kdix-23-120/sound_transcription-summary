@@ -27,3 +27,17 @@ async function summarize() {
   const data = await res.json();
   document.getElementById("summary").innerText = data.summary;
 }
+
+async function translate() {
+  const formData = new FormData();
+  formData.append("text", transcript);
+
+  const res = await fetch("http://localhost:8000/translate", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await res.json();
+  document.getElementById("translate").innerText = data.summary;
+}
+
