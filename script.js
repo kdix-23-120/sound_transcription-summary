@@ -43,5 +43,5 @@ document.getElementById("translate-btn").addEventListener("click", async () => {
   });
 
   const data = await res.json();
-  document.getElementById("translate").value = data.summary || "翻訳できませんでした";
+  document.getElementById("translate").value = data.translate || "翻訳できませんでした";
 });
